@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pelicula != null ? pelicula.titulo : 'Detalle de Película'}">Detalle de Película</title>
+    <link rel="stylesheet" th:href="@{/css/peliculas.css}">
+</head>
+<body>
+    <h1 th:text="${nombreCine}">Cinemax Oaxaca - Alejandro Jimenez</h1>
+    <h2>Detalle de la Película</h2>
+
+    <div th:if="${pelicula != null}">
+        <ul>
+            <li><strong>ID:</strong> <span th:text="${pelicula.id}"></span></li>
+            <li><strong>Título:</strong> <span th:text="${pelicula.titulo}"></span></li>
+            <li><strong>Director:</strong> <span th:text="${pelicula.director}"></span></li>
+            <li><strong>Género:</strong> <span th:text="${pelicula.genero}"></span></li>
+        </ul>
+    </div>
+
+    <div th:if="${pelicula == null}">
+        <p>No se encontró la película con el ID solicitado.</p>
+    </div>
+
+    <p>
+        <a th:href="@{/peliculas/cartelera}">&larr; Regresar a la Cartelera</a>
+    </p>
+</body>
+</html>
